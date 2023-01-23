@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CsvHelper" Version="30.0.1" />
+    <PackageReference Include="iTextSharp" Version="5.5.13.3" />
+    <PackageReference Include="Newtonsoft.Json.Schema" Version="3.0.14" />
+    <PackageReference Include="ServiceStack.Text" Version="6.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DocumentModel\DocumentModel.csproj" />
+  </ItemGroup>
+
+</Project>

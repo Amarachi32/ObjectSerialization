@@ -1,0 +1,62 @@
+using System;
+using System.IO;
+using Newtonsoft.Json;
+using System.Xml.Serialization;
+using CsvHelper;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+
+// Your class to be deserialized
+class MyClass
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        MyClass obj = new MyClass { Name = "John", Age = 30 };
+
+        // Deserialize to JSON
+        string json = JsonConvert.SerializeObject(obj);
+        Console.WriteLine("JSON format: " + json);
+
+        // Deserialize to CSV
+        using (var writer = new StringWriter())
+        using (var csv = new CsvWriter(writer))
+        {
+            csv.WriteRecord(obj);
+            string csvText = writer.ToString();
+            Console.WriteLine("CSV format: " + csvText);
+        }
+
+        // Deserialize to XML
+        var xmlSerializer = new XmlSerializer(obj.GetType());
+        using (var writer = new StringWriter())
+        {
+            xmlSerializer.Serialize(writer, obj);
+            string xmlText = writer.ToString();
+            Console.WriteLine("XML format: " + xmlText);
+        }
+
+        // Deserialize to PDF
+        using (var stream = new MemoryStream())
+        {
+            Document pdfDoc = new Document();
+            PdfWriter.GetInstance(pdfDoc, stream).CloseStream = false;
+            pdfDoc.Open();
+            pdfDoc.Add(new Paragraph(json));
+            pdfDoc.Close();
+            stream.Position = 0;
+            byte[] pdfContent = stream.ToArray();
+            Console.WriteLine("PDF format: " + pdfContent);
+        }
+
+        // Deserialize to TXT
+        string txt = json;
+        File.WriteAllText("output.txt", txt);
+        Console.WriteLine("TXT format: " + txt);
+    }
+}
