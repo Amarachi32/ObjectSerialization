@@ -1,7 +1,7 @@
-﻿# Object Deserialization🤷‍♀️
+﻿# Object Serialization🤷‍♀️
 
  In this Project I uses Newtonsoft.Json, CsvHelper and iTextSharp.
- text libraries to handle the serialization to JSON, CSV, XML and PDF respectively.
+ text libraries to handle the serialization of objecs to JSON, CSV, XML and PDF respectively.
  Also, you need to install these libraries via nuget package manager in your visual studio.
 
  
@@ -27,7 +27,8 @@
 
 
 **NOTE**:We have used the power of **Object Serialization** in C# to
-deserialized object in the respective format and print out its format to the console. This repo is subject to future modifications.
+serialized object in different respective format and print out its format to the console.
+This repo is subject to future modifications.
 
 
 
