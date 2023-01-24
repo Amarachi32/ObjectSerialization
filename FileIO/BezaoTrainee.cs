@@ -10,12 +10,14 @@ namespace FileIO
     [Document("A Software Engineering program ", Input = "C-sharp and Angular", Output = "None")]
     public class BezaoTrainee
     {
-        [Document("Student's Age")]
-        public int _age;
+        
+       
         [Document("Student's FullName")]
         public string FullName { get; set; }
 
         public string Address { get; set; }
+        [Document("Student's Age")]
+        public int Age { get; set; }
 
         public BezaoTrainee(string fullname, string address)
         {

@@ -14,8 +14,9 @@ namespace FileIO
         static void Main(string[] args)
         {
             Console.WriteLine("**********************Software Engineering Documentation***************************");
-            // ReflectionDocs.GetDocs();
-            BezaoTrainee obj = new BezaoTrainee { FullName = "John", Address = "centenery" };
+            BezaoTrainee obj = new BezaoTrainee { FullName = "John", Address = "centenery", Age = 45 };
+            ReflectionDocs.GetDocs();
+            Serialize.ReadFromTxt();
 
             //1)     Deserialize to JSON
             string json = JsonConvert.SerializeObject(obj);
@@ -49,10 +50,6 @@ namespace FileIO
                 string xmlText = writer.ToString();
                 Console.WriteLine("\n\nXML format: " + xmlText);
             }
-            //4)    Deserialize to TxT file
-            string sw = json;
-            File.WriteAllText("object.txt", sw.ToString());
-            Console.WriteLine($"\n\nTEXT format:{ File.ReadAllText("object.txt")}");
 
             //5)     Deserialize to PDF
             using (var stream = new MemoryStream())
@@ -65,7 +62,7 @@ namespace FileIO
                 stream.Position = 0;
                 byte[] pdfContent = stream.ToArray();
                 Console.WriteLine("\n\nPDF format: " + pdfContent);
-                Console.WriteLine(File.ReadAllText("object.pdf"));
+                // Console.WriteLine(File.ReadAllText("object.pdf"));
             }
         }
     }
